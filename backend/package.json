@@ -1,16 +1,16 @@
 {
-  "name": "backend",
+  "name": "bite-buddies-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.ts",
+    "start": "node dist/server.ts",
     "dev": "nodemon src/server.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "jafethmontero",
   "license": "ISC",
-  "description": "",
+  "description": "This is the backend of the Bite Buddies project",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
