@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config";
 import userRoutes from "./routes/userRoutes";
+import recipeRoutes from "./routes/recipeRoutes";
 
 dotenv.config();
 connectDB();
@@ -17,6 +18,7 @@ app.get("/", (_req: Request, res: Response): void => {
 });
 
 app.use("/api/users", userRoutes);
+app.use("/api/recipes", recipeRoutes);
 
 const PORT = process.env.PORT ?? 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
