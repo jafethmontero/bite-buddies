@@ -16,7 +16,7 @@ router.get("/", getRecipes);
 router.get("/:id", getRecipeById);
 
 // Create a new recipe
-router.post("/", createRecipe);
+router.post("/new", createRecipe);
 
 // Update an existing recipe
 router.put("/:id", updateRecipe);

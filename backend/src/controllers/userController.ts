@@ -22,7 +22,7 @@ export const registerUser = async (
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, {
       expiresIn: "30d",
     });
-    res.json({ user, token });
+    res.status(201).json({ user, token });
   } catch (err) {
     res.status(500).json({ message: "Server Error" });
   }
