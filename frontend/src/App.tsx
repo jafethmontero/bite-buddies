@@ -8,6 +8,8 @@ import Explore from "./pages/Explore";
 import MyRecipes from "./pages/MyRecipes";
 import Pricing from "./pages/Pricing";
 import Checkout from "./pages/Checkout";
+import Footer from "./components/Footer";
+import RecipeDetails from "./pages/RecipeDetails";
 
 function App() {
   return (
@@ -24,8 +26,10 @@ function App() {
             <Route path="/my-recipes" element={<MyRecipes />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/recipe/:id" element={<RecipeDetails />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );
