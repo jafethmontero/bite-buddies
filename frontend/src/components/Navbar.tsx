@@ -1,89 +1,126 @@
+import { BookOpen, ChefHat, LogIn, PlusCircle, Search } from "lucide-react";
 import { Link } from "react-router-dom";
-import { ChefHat, Search, PlusCircle, BookOpen, LogIn } from "lucide-react";
-import Button from "./Button";
 import { useUserStore } from "../stores/useUserStore";
+import Button from "./Button";
 
 export default function Navbar() {
   const { isAuthenticated } = useUserStore();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link
-              to="/"
-              className="flex items-center  text-primary hover:text-primary-dark"
-            >
-              <ChefHat className="h-8 w-8" />
-              <span className="ml-2 text-xl font-bold text-gray-900">
-                BiteBuddies
-              </span>
+    <>
+      {/* 🌟 Top Logo (Visible only on Mobile) */}
+      <div className="fixed top-0 left-0 right-0 bg-white py-3 shadow-md md:hidden flex justify-center">
+        <Link to="/" className="flex items-center group">
+          <ChefHat className="h-8 w-8 text-primary group-hover:text-primary-dark" />
+          <p className="ml-2 text-xl font-bold text-gray-900">BiteBuddies</p>
+        </Link>
+      </div>
+
+      <nav className="hidden md:block fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-16">
+            {/* Logo */}
+            <Link to="/" className="flex items-center group">
+              <ChefHat className="h-8 w-8 text-primary group-hover:text-primary-dark" />
+              <p className="text-lg relative w-max">
+                <span className="ml-2 text-xl font-bold text-gray-900">
+                  BiteBuddies
+                </span>
+                <span className="absolute -bottom-1 left-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
+                <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
+              </p>
             </Link>
-            <div className="hidden md:flex md:ml-8 space-x-8">
-              <Link
-                to="/explore"
-                className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium"
-              >
-                Explore
-              </Link>
-              <Link
-                to="/pricing"
-                className="text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium"
-              >
-                Pricing
-              </Link>
+
+            {/* Navigation */}
+            <div className="flex items-center space-x-6">
+              {isAuthenticated ? (
+                <>
+                  <Link
+                    to="/explore"
+                    className="text-gray-600 hover:text-primary-dark group"
+                  >
+                    <p className="text-lg relative w-max">
+                      <span>Explore</span>
+                      <span className="absolute -bottom-1 left-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
+                      <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
+                    </p>
+                  </Link>
+                  <Link
+                    to="/create"
+                    className="text-gray-600 hover:text-primary-dark group"
+                  >
+                    <p className="text-lg relative w-max">
+                      <span>Create</span>
+                      <span className="absolute -bottom-1 left-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
+                      <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
+                    </p>
+                  </Link>
+                  <Link
+                    to="/my-recipes"
+                    className="text-gray-600 hover:text-primary-dark group"
+                  >
+                    <p className="text-lg relative w-max">
+                      <span>My recipes</span>
+                      <span className="absolute -bottom-1 left-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
+                      <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
+                    </p>
+                  </Link>
+                  <Link to="/pricing">
+                    <Button variant="primary" size="sm" type="button">
+                      Upgrade to Pro
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  {/* Auth buttons */}
+                  <Link to="/login">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="mr-2"
+                      type="button"
+                    >
+                      <LogIn className="h-4 w-4 mr-2" />
+                      Login
+                    </Button>
+                  </Link>
+                  <Link to="/register">
+                    <Button variant="primary" size="sm" type="button">
+                      Register
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
-
-          <div className="flex items-center space-x-4">
-            {isAuthenticated ? (
-              <>
-                <Link
-                  to="/explore"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  <Search className="h-5 w-5" />
-                </Link>
-                <Link
-                  to="/create"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  <PlusCircle className="h-5 w-5" />
-                </Link>
-                <Link
-                  to="/my-recipes"
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  <BookOpen className="h-5 w-5" />
-                </Link>
-                <Button variant="primary" size="sm" type="button">
-                  Upgrade to Pro
-                </Button>
-              </>
-            ) : (
-              <>
-                <Link to="/login">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="mr-2"
-                    type="button"
-                  >
-                    <LogIn className="h-4 w-4 mr-2" />
-                    Login
-                  </Button>
-                </Link>
-                <Link to="/register">
-                  <Button variant="primary" size="sm" type="button">
-                    Register
-                  </Button>
-                </Link>
-              </>
-            )}
-          </div>
         </div>
+      </nav>
+
+      {/* 🌟 Bottom Navigation Bar (Visible only on Mobile) */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 md:hidden flex justify-around py-3">
+        <Link
+          to="/explore"
+          className="flex flex-col items-center text-gray-600 hover:text-primary-dark"
+        >
+          <Search className="h-6 w-6" />
+          <span className="text-xs">Explore</span>
+        </Link>
+        <Link
+          to="/create"
+          className="flex flex-col items-center text-gray-600 hover:text-primary-dark"
+        >
+          <PlusCircle className="h-6 w-6" />
+          <span className="text-xs">Create</span>
+        </Link>
+        <Link
+          to="/my-recipes"
+          className="flex flex-col items-center text-gray-600 hover:text-primary-dark"
+        >
+          <BookOpen className="h-6 w-6" />
+          <span className="text-xs">Recipes</span>
+        </Link>
       </div>
-    </nav>
+    </>
   );
 }
