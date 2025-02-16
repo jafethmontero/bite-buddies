@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ChefHat, Mail, Lock } from "lucide-react";
+import { useUserStore } from "../stores/useUserStore";
 import Button from "../components/Button";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useUserStore();
+  const navigate = useNavigate();
   const url = import.meta.env.VITE_BASE_API_URL + "/api/users/login";
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,7 +25,8 @@ export default function Login() {
       });
       const data = await user.json();
       console.log(data);
-      setIsLoading(false);
+      login(data.user, data.token);
+      navigate("/explore");
     } catch (error) {
       if (error) {
         console.log(error);
