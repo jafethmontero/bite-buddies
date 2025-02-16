@@ -6,11 +6,43 @@ import Button from "../components/Button";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const url = import.meta.env.VITE_BASE_API_URL + "/api/users/login";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement login logic
+    try {
+      setIsLoading(true);
+      const user = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await user.json();
+      console.log(data);
+      setIsLoading(false);
+    } catch (error) {
+      if (error) {
+        console.log(error);
+      }
+      setIsLoading(false);
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="w-full max-w-md text-center">
+          <ChefHat className="h-12 w-12 text-primary" />
+          <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900">
+            Signing in...
+          </h2>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8 bg-gray-50">
@@ -98,7 +130,7 @@ export default function Login() {
 
             <div className="text-sm">
               <a
-                href="#"
+                href="https://google.com"
                 className="font-medium text-primary hover:text-primary"
               >
                 Forgot your password?
