@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ChefHat, Mail, Lock, User } from 'lucide-react';
-import Button from '../components/Button';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ChefHat, Mail, Lock, User } from "lucide-react";
+import Button from "../components/Button";
 
 export default function Register() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,12 +18,17 @@ export default function Register() {
       <div className="w-full max-w-md">
         <div className="text-center">
           <Link to="/" className="inline-flex items-center justify-center mb-8">
-            <ChefHat className="h-12 w-12 text-emerald-600" />
+            <ChefHat className="h-12 w-12 text-primary" />
           </Link>
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">Create your account</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+            Create your account
+          </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Already have an account?{' '}
-            <Link to="/login" className="font-medium text-emerald-600 hover:text-emerald-500">
+            Already have an account?{" "}
+            <Link
+              to="/login"
+              className="font-medium text-primary hover:text-primary"
+            >
               Sign in
             </Link>
           </p>
@@ -47,7 +52,7 @@ export default function Register() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm"
+                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm"
                   placeholder="Full name"
                 />
               </div>
@@ -69,7 +74,7 @@ export default function Register() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm"
+                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm"
                   placeholder="Email address"
                 />
               </div>
@@ -91,7 +96,7 @@ export default function Register() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm"
+                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm"
                   placeholder="Password"
                 />
               </div>
@@ -106,17 +111,23 @@ export default function Register() {
                   name="terms"
                   type="checkbox"
                   required
-                  className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-600"
+                  className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
                 />
               </div>
               <div className="ml-3">
                 <label htmlFor="terms" className="text-sm text-gray-500">
-                  I agree to the{' '}
-                  <a href="#" className="font-medium text-emerald-600 hover:text-emerald-500">
+                  I agree to the{" "}
+                  <a
+                    href="#"
+                    className="font-medium text-primary hover:text-primary"
+                  >
                     Terms of Service
-                  </a>{' '}
-                  and{' '}
-                  <a href="#" className="font-medium text-emerald-600 hover:text-emerald-500">
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="#"
+                    className="font-medium text-primary hover:text-primary"
+                  >
                     Privacy Policy
                   </a>
                 </label>

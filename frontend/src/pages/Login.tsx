@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ChefHat, Mail, Lock } from 'lucide-react';
-import Button from '../components/Button';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ChefHat, Mail, Lock } from "lucide-react";
+import Button from "../components/Button";
 
 export default function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,12 +17,17 @@ export default function Login() {
       <div className="w-full max-w-md">
         <div className="text-center">
           <Link to="/" className="inline-flex items-center justify-center mb-8">
-            <ChefHat className="h-12 w-12 text-emerald-600" />
+            <ChefHat className="h-12 w-12 text-primary" />
           </Link>
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">Welcome back</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900">
+            Welcome back
+          </h2>
           <p className="mt-2 text-sm text-gray-600">
-            Don't have an account?{' '}
-            <Link to="/register" className="font-medium text-emerald-600 hover:text-emerald-500">
+            Don't have an account?{" "}
+            <Link
+              to="/register"
+              className="font-medium text-primary hover:text-primary"
+            >
               Sign up
             </Link>
           </p>
@@ -46,7 +51,7 @@ export default function Login() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm"
+                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm"
                   placeholder="Email address"
                 />
               </div>
@@ -68,7 +73,7 @@ export default function Login() {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-emerald-600 sm:text-sm"
+                  className="block w-full rounded-md border-0 py-3 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm"
                   placeholder="Password"
                 />
               </div>
@@ -81,15 +86,21 @@ export default function Login() {
                 id="remember-me"
                 name="remember-me"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-600"
+                className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
               />
-              <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+              <label
+                htmlFor="remember-me"
+                className="ml-2 block text-sm text-gray-900"
+              >
                 Remember me
               </label>
             </div>
 
             <div className="text-sm">
-              <a href="#" className="font-medium text-emerald-600 hover:text-emerald-500">
+              <a
+                href="#"
+                className="font-medium text-primary hover:text-primary"
+              >
                 Forgot your password?
               </a>
             </div>

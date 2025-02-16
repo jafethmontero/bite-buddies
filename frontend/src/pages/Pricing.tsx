@@ -108,7 +108,7 @@ export default function Pricing() {
     <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="text-base font-semibold leading-7 text-emerald-600">
+          <h1 className="text-base font-semibold leading-7 text-primary">
             Pricing
           </h1>
           <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
@@ -122,7 +122,7 @@ export default function Pricing() {
               type="button"
               className={`${
                 !annual ? "bg-white shadow-sm" : "hover:bg-gray-50"
-              } relative rounded-full py-2 px-4 text-sm font-semibold text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500`}
+              } relative rounded-full py-2 px-4 text-sm font-semibold text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
               onClick={() => setAnnual(false)}
             >
               Monthly
@@ -131,11 +131,11 @@ export default function Pricing() {
               type="button"
               className={`${
                 annual ? "bg-white shadow-sm" : "hover:bg-gray-50"
-              } relative ml-0.5 rounded-full py-2 px-4 text-sm font-semibold text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500`}
+              } relative ml-0.5 rounded-full py-2 px-4 text-sm font-semibold text-gray-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary`}
               onClick={() => setAnnual(true)}
             >
               Annual
-              <span className="absolute -top-2 -right-10 rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-600">
+              <span className="absolute -top-2 -right-10 rounded-full bg-primary px-2 py-0.5 text-xs font-semibold text-primary">
                 Save 17%
               </span>
             </button>
@@ -189,6 +189,7 @@ export default function Pricing() {
                       : ""
                   }`}
                   onClick={() => handleSubscribe(tier)}
+                  type="button"
                 >
                   {tier.price.monthly === 0 ? "Get started" : "Subscribe"}
                 </Button>
@@ -201,7 +202,7 @@ export default function Pricing() {
                 <li className="flex gap-x-3 items-center">
                   <Sparkles
                     className={`h-5 w-5 ${
-                      tier.popular ? "text-white" : "text-emerald-600"
+                      tier.popular ? "text-white" : "text-primary"
                     }`}
                   />
                   <span className="flex items-center gap-1">
@@ -219,7 +220,7 @@ export default function Pricing() {
                   <li key={feature} className="flex gap-x-3">
                     <Check
                       className={`h-6 w-5 flex-none ${
-                        tier.popular ? "text-white" : "text-emerald-600"
+                        tier.popular ? "text-white" : "text-primary"
                       }`}
                     />
                     {feature}
@@ -233,7 +234,7 @@ export default function Pricing() {
         <div className="mt-16 mx-auto max-w-2xl text-center">
           <div className="rounded-3xl bg-gray-900/5 p-8">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center justify-center gap-2">
-              <Zap className="h-5 w-5 text-emerald-600" />
+              <Zap className="h-5 w-5 text-primary" />
               Enterprise Solutions
             </h3>
             <p className="mt-2 text-sm text-gray-600">
@@ -241,7 +242,7 @@ export default function Pricing() {
               offer tailored enterprise plans with advanced features and
               dedicated support.
             </p>
-            <Button variant="outline" className="mt-6">
+            <Button variant="outline" className="mt-6" type="button">
               Contact Sales
             </Button>
           </div>

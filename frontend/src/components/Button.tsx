@@ -11,11 +11,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
-        type="button"
         className={cn(
-          "pointer-events-none inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-auto disabled:opacity-50",
+          "cursor-pointer inline-flex items-center justify-center rounded-md font-medium transition-colors",
           {
-            "bg-emerald-600 text-white hover:bg-emerald-700":
+            "bg-primary text-white hover:bg-primary-dark":
               variant === "primary",
             "bg-gray-100 text-gray-900 hover:bg-gray-200":
               variant === "secondary",
@@ -24,6 +23,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             "h-9 px-4 text-sm": size === "sm",
             "h-10 px-6 text-base": size === "md",
             "h-11 px-8 text-lg": size === "lg",
+            "opacity-50 cursor-default": props.disabled,
           },
           className
         )}

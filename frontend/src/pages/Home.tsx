@@ -18,10 +18,12 @@ export default function Home() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link to="/register">
-                <Button size="lg">Get Started</Button>
+                <Button size="lg" type="button" onClick={() => {}}>
+                  Get Started
+                </Button>
               </Link>
               <Link to="/explore">
-                <Button variant="outline" size="lg">
+                <Button variant="outline" size="lg" type="button">
                   Explore Recipes
                 </Button>
               </Link>
@@ -39,10 +41,10 @@ export default function Home() {
             </h2>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <div className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              <div className="flex flex-col">
+            <div className="flex justify-center items-center gap-12">
+              <div className="flex flex-col max-w-md">
                 <div className="mb-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
                     <Sparkles className="h-6 w-6 text-white" />
                   </div>
                 </div>
@@ -57,9 +59,9 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col max-w-md">
                 <div className="mb-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
                     <Users className="h-6 w-6 text-white" />
                   </div>
                 </div>
@@ -74,9 +76,9 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex flex-col">
+              <div className="flex flex-col max-w-md">
                 <div className="mb-6">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-600">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary">
                     <Bookmark className="h-6 w-6 text-white" />
                   </div>
                 </div>

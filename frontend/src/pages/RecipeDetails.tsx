@@ -180,6 +180,7 @@ export default function RecipeDetails() {
                 variant="secondary"
                 size="sm"
                 className="!bg-white/10 !text-white hover:!bg-white/20"
+                type="button"
               >
                 Follow
               </Button>
@@ -196,14 +197,14 @@ export default function RecipeDetails() {
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100 text-emerald-600 mx-auto mb-2">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-primary mx-auto mb-2">
                     <Clock className="h-6 w-6" />
                   </div>
                   <p className="text-sm text-gray-500">Cooking Time</p>
                   <p className="font-semibold">{recipe.cookingTime} mins</p>
                 </div>
                 <div className="text-center">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100 text-emerald-600 mx-auto mb-2">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-primary mx-auto mb-2">
                     <UtensilsCrossed className="h-6 w-6" />
                   </div>
                   <p className="text-sm text-gray-500">Difficulty</p>
@@ -212,7 +213,7 @@ export default function RecipeDetails() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100 text-emerald-600 mx-auto mb-2">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-primary text-primary mx-auto mb-2">
                     <Users className="h-6 w-6" />
                   </div>
                   <p className="text-sm text-gray-500">Servings</p>
@@ -247,7 +248,7 @@ export default function RecipeDetails() {
               <ul className="space-y-3">
                 {recipe.ingredients.map((ingredient, index) => (
                   <li key={index} className="flex items-center">
-                    <div className="h-2 w-2 rounded-full bg-emerald-500 mr-3" />
+                    <div className="h-2 w-2 rounded-full bg-primary mr-3" />
                     <span className="font-medium mr-2">
                       {(
                         Number(ingredient.amount) *
@@ -268,7 +269,7 @@ export default function RecipeDetails() {
                 {recipe.instructions.map((instruction, index) => (
                   <div key={index} className="flex">
                     <div className="flex-none">
-                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-emerald-100 text-emerald-600 font-semibold">
+                      <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary font-semibold">
                         {index + 1}
                       </div>
                     </div>
@@ -295,7 +296,7 @@ export default function RecipeDetails() {
                       value={newComment}
                       onChange={(e) => setNewComment(e.target.value)}
                       placeholder="Share your experience with this recipe..."
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500 sm:text-sm"
+                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm"
                       rows={3}
                     />
                     <div className="mt-3 flex justify-end">
@@ -358,13 +359,11 @@ export default function RecipeDetails() {
               <div className="grid grid-cols-4 gap-4">
                 <button
                   onClick={handleLike}
-                  className="flex flex-col items-center text-gray-500 hover:text-emerald-600"
+                  className="flex flex-col items-center text-gray-500 hover:text-primary"
                 >
                   <div
                     className={`p-3 rounded-full ${
-                      isLiked
-                        ? "bg-emerald-100 text-emerald-600"
-                        : "bg-gray-100"
+                      isLiked ? "bg-primary text-primary" : "bg-gray-100"
                     }`}
                   >
                     <Heart
@@ -375,7 +374,7 @@ export default function RecipeDetails() {
                 </button>
                 <button
                   onClick={handleComment}
-                  className="flex flex-col items-center text-gray-500 hover:text-emerald-600"
+                  className="flex flex-col items-center text-gray-500 hover:text-primary"
                 >
                   <div className="p-3 rounded-full bg-gray-100">
                     <MessageCircle className="h-6 w-6" />
@@ -384,13 +383,11 @@ export default function RecipeDetails() {
                 </button>
                 <button
                   onClick={handleSave}
-                  className="flex flex-col items-center text-gray-500 hover:text-emerald-600"
+                  className="flex flex-col items-center text-gray-500 hover:text-primary"
                 >
                   <div
                     className={`p-3 rounded-full ${
-                      isSaved
-                        ? "bg-emerald-100 text-emerald-600"
-                        : "bg-gray-100"
+                      isSaved ? "bg-primary text-primary" : "bg-gray-100"
                     }`}
                   >
                     <Bookmark
@@ -401,7 +398,7 @@ export default function RecipeDetails() {
                 </button>
                 <button
                   onClick={handleShare}
-                  className="flex flex-col items-center text-gray-500 hover:text-emerald-600"
+                  className="flex flex-col items-center text-gray-500 hover:text-primary"
                 >
                   <div className="p-3 rounded-full bg-gray-100">
                     <Share2 className="h-6 w-6" />
@@ -421,7 +418,7 @@ export default function RecipeDetails() {
                 <Star className="h-5 w-5 text-gray-300" />
                 <span className="ml-2 text-sm text-gray-600">(4.2)</span>
               </div>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full" type="button">
                 Rate this recipe
               </Button>
             </div>

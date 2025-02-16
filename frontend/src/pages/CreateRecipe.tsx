@@ -104,21 +104,23 @@ export default function CreateRecipe() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold text-gray-900">Create Recipe</h1>
-        <Button onClick={getAISuggestions} disabled={isGenerating}>
+        <Button
+          onClick={getAISuggestions}
+          disabled={isGenerating}
+          type="button"
+        >
           <Sparkles className="h-5 w-5 mr-2" />
           Get AI Suggestions
         </Button>
       </div>
 
       {aiSuggestion && (
-        <div className="mb-8 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+        <div className="mb-8 p-4 bg-primary border border-primary rounded-lg">
           <div className="flex items-start">
-            <Sparkles className="h-5 w-5 text-emerald-600 mt-1 mr-3" />
+            <Sparkles className="h-5 w-5 text-primary mt-1 mr-3" />
             <div>
-              <h3 className="font-semibold text-emerald-900 mb-1">
-                AI Suggestion
-              </h3>
-              <p className="text-emerald-800">{aiSuggestion}</p>
+              <h3 className="font-semibold text-primary mb-1">AI Suggestion</h3>
+              <p className="text-primary">{aiSuggestion}</p>
             </div>
           </div>
         </div>
@@ -140,7 +142,7 @@ export default function CreateRecipe() {
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                 required
               />
             </div>
@@ -157,7 +159,7 @@ export default function CreateRecipe() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={3}
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                 required
               />
             </div>
@@ -176,7 +178,7 @@ export default function CreateRecipe() {
                   id="cookingTime"
                   value={cookingTime}
                   onChange={(e) => setCookingTime(e.target.value)}
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                   required
                 />
               </div>
@@ -194,7 +196,7 @@ export default function CreateRecipe() {
                   id="servings"
                   value={servings}
                   onChange={(e) => setServings(e.target.value)}
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                   required
                 />
               </div>
@@ -211,7 +213,7 @@ export default function CreateRecipe() {
                   id="difficulty"
                   value={difficulty}
                   onChange={(e) => setDifficulty(e.target.value)}
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                   required
                 >
                   <option value="easy">Easy</option>
@@ -247,7 +249,7 @@ export default function CreateRecipe() {
                       updateIngredient(ingredient.id, "name", e.target.value)
                     }
                     placeholder="Ingredient name"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                     required
                   />
                 </div>
@@ -259,7 +261,7 @@ export default function CreateRecipe() {
                       updateIngredient(ingredient.id, "amount", e.target.value)
                     }
                     placeholder="Amount"
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                     required
                   />
                 </div>
@@ -269,7 +271,7 @@ export default function CreateRecipe() {
                     onChange={(e) =>
                       updateIngredient(ingredient.id, "unit", e.target.value)
                     }
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                     title="Unit"
                   >
                     <option value="g">g</option>
@@ -309,7 +311,7 @@ export default function CreateRecipe() {
             {steps.map((step, index) => (
               <div key={step.id} className="flex items-start gap-4">
                 <div className="flex-none pt-2">
-                  <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-emerald-100 text-emerald-800 font-medium text-sm">
+                  <span className="inline-flex items-center justify-center h-6 w-6 rounded-full bg-primary text-primary font-medium text-sm">
                     {index + 1}
                   </span>
                 </div>
@@ -319,7 +321,7 @@ export default function CreateRecipe() {
                     onChange={(e) => updateStep(step.id, e.target.value)}
                     placeholder="Describe this step"
                     rows={2}
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-emerald-500 focus:ring-emerald-500"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
                     required
                   />
                 </div>
