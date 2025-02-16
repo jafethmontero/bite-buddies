@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { ChefHat, Search, PlusCircle, BookOpen, LogIn } from "lucide-react";
 import Button from "./Button";
+import { useUserStore } from "../stores/useUserStore";
 
 export default function Navbar() {
-  const isAuthenticated = false;
+  const { isAuthenticated } = useUserStore();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
