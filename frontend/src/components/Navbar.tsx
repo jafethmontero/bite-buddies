@@ -1,4 +1,11 @@
-import { BookOpen, ChefHat, LogIn, PlusCircle, Search } from "lucide-react";
+import {
+  BookOpen,
+  ChefHat,
+  LogIn,
+  PlusCircle,
+  Search,
+  LogOut,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import Button from "./Button";
@@ -9,10 +16,12 @@ export default function Navbar() {
   return (
     <>
       {/* 🌟 Top Logo (Visible only on Mobile) */}
-      <div className="fixed top-0 left-0 right-0 bg-white py-3 shadow-md md:hidden flex justify-center">
+      <div className="fixed top-0 left-0 right-0 bg-white py-3 md:hidden flex justify-center z-50 border-b border-gray-200">
         <Link to="/" className="flex items-center group">
           <ChefHat className="h-8 w-8 text-primary group-hover:text-primary-dark" />
-          <p className="ml-2 text-xl font-bold text-gray-900">BiteBuddies</p>
+          <p className="ml-2 text-xl font-bold text-gray-800 group-hover:text-primary-dark">
+            BiteBuddies
+          </p>
         </Link>
       </div>
 
@@ -23,7 +32,7 @@ export default function Navbar() {
             <Link to="/" className="flex items-center group">
               <ChefHat className="h-8 w-8 text-primary group-hover:text-primary-dark" />
               <p className="text-lg relative w-max">
-                <span className="ml-2 text-xl font-bold text-gray-900">
+                <span className="ml-2 text-xl font-bold text-gray-800 group-hover:text-primary-dark">
                   BiteBuddies
                 </span>
                 <span className="absolute -bottom-1 left-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
@@ -31,7 +40,7 @@ export default function Navbar() {
               </p>
             </Link>
 
-            {/* Navigation */}
+            {/* Desktop Navigation */}
             <div className="flex items-center space-x-6">
               {isAuthenticated ? (
                 <>
@@ -65,11 +74,19 @@ export default function Navbar() {
                       <span className="absolute -bottom-1 right-1/2 w-0 transition-all h-0.5 bg-primary-dark group-hover:w-3/6"></span>
                     </p>
                   </Link>
-                  <Link to="/pricing">
+                  {/* <Link to="/pricing">
                     <Button variant="primary" size="sm" type="button">
                       Upgrade to Pro
                     </Button>
-                  </Link>
+                  </Link> */}
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="mr-2"
+                    type="button"
+                  >
+                    <LogOut className="h-4 w-4" />
+                  </Button>
                 </>
               ) : (
                 <>
@@ -98,7 +115,7 @@ export default function Navbar() {
       </nav>
 
       {/* 🌟 Bottom Navigation Bar (Visible only on Mobile) */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 md:hidden flex justify-around py-3">
+      <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:hidden flex justify-around py-3 z-10">
         <Link
           to="/explore"
           className="flex flex-col items-center text-gray-600 hover:text-primary-dark"
@@ -120,7 +137,7 @@ export default function Navbar() {
           <BookOpen className="h-6 w-6" />
           <span className="text-xs">Recipes</span>
         </Link>
-      </div>
+      </nav>
     </>
   );
 }
