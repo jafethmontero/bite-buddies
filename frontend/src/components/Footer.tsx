@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex-col md:flex-row flex md:justify-around items-center gap-8 md:gap-0">
+        <div className="flex-col items-baseline ml-8 md:ml-0 md:flex-row flex md:justify-between md:items-center gap-8 md:gap-0">
           {/* Brand */}
           <div className="space-y-4 max-w-xs">
             <Link to="/" className="flex items-center">
@@ -25,7 +25,7 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="min-w-xs">
+          <div>
             <h3 className="font-semibold text-gray-900 mb-4">Quick Links</h3>
             <ul className="space-y-3">
               <li>
@@ -59,7 +59,7 @@ export default function Footer() {
           </div>
 
           {/* Support */}
-          <div className="min-w-xs">
+          <div>
             <h3 className="font-semibold text-gray-900 mb-4">Support</h3>
             <ul className="space-y-3">
               <li>

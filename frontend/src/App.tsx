@@ -14,9 +14,9 @@ import RecipeDetails from "./pages/RecipeDetails";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 w-full pb-12 md:pb-0">
+      <div className="min-h-screen w-full pb-12 md:pb-0">
         <Navbar />
-        <main className="pt-16 w-full max-w-screen-xl mx-auto px-4 md:px-6 lg:px-8">
+        <main className="pt-16 w-full mx-auto bg-gray-50">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />

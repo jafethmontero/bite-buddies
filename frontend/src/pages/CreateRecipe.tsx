@@ -117,10 +117,10 @@ export default function CreateRecipe() {
       {aiSuggestion && (
         <div className="mb-8 p-4 bg-primary border border-primary rounded-lg">
           <div className="flex items-start">
-            <Sparkles className="h-5 w-5 text-primary mt-1 mr-3" />
+            <Sparkles className="h-5 w-5 text-white mt-1 mr-3" />
             <div>
-              <h3 className="font-semibold text-primary mb-1">AI Suggestion</h3>
-              <p className="text-primary">{aiSuggestion}</p>
+              <h3 className="font-semibold text-white mb-1">AI Suggestion</h3>
+              <p className="text-white">{aiSuggestion}</p>
             </div>
           </div>
         </div>
