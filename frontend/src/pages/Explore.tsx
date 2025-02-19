@@ -1,11 +1,11 @@
-import { useState } from "react";
 import {
-  Search,
   Clock,
-  UtensilsCrossed,
-  Users,
+  Search,
   SlidersHorizontal,
+  Users,
+  UtensilsCrossed,
 } from "lucide-react";
+import { useState } from "react";
 import Button from "../components/Button";
 
 interface Recipe {

@@ -1,13 +1,7 @@
 import { useState } from "react";
-import {
-  Plus,
-  Minus,
-  Sparkles,
-  Clock,
-  Users,
-  UtensilsCrossed,
-} from "lucide-react";
+import { Plus, Minus, Clock, Users, UtensilsCrossed } from "lucide-react";
 import Button from "../components/Button";
+import InputField from "../components/InputField";
 
 interface Ingredient {
   id: string;
@@ -31,8 +25,6 @@ export default function CreateRecipe() {
     { id: "1", name: "", amount: "", unit: "g" },
   ]);
   const [steps, setSteps] = useState<Step[]>([{ id: "1", description: "" }]);
-  const [aiSuggestion, setAiSuggestion] = useState("");
-  const [isGenerating, setIsGenerating] = useState(false);
 
   const addIngredient = () => {
     setIngredients([
@@ -75,20 +67,8 @@ export default function CreateRecipe() {
     );
   };
 
-  const getAISuggestions = async () => {
-    setIsGenerating(true);
-    // TODO: Implement AI suggestions
-    setTimeout(() => {
-      setAiSuggestion(
-        "Try adding a pinch of smoked paprika to enhance the flavor profile. Consider marinating the ingredients for 30 minutes before cooking to develop deeper flavors."
-      );
-      setIsGenerating(false);
-    }, 2000);
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement recipe submission
     console.log({
       title,
       description,
@@ -102,50 +82,20 @@ export default function CreateRecipe() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Create Recipe</h1>
-        <Button
-          onClick={getAISuggestions}
-          disabled={isGenerating}
-          type="button"
-        >
-          <Sparkles className="h-5 w-5 mr-2" />
-          Get AI Suggestions
-        </Button>
-      </div>
-
-      {aiSuggestion && (
-        <div className="mb-8 p-4 bg-primary border border-primary rounded-lg">
-          <div className="flex items-start">
-            <Sparkles className="h-5 w-5 text-white mt-1 mr-3" />
-            <div>
-              <h3 className="font-semibold text-white mb-1">AI Suggestion</h3>
-              <p className="text-white">{aiSuggestion}</p>
-            </div>
-          </div>
-        </div>
-      )}
+      <h1 className="text-3xl font-bold text-gray-900 mb-8">Create Recipe</h1>
 
       <form onSubmit={handleSubmit} className="space-y-8">
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
           <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
           <div className="grid grid-cols-1 gap-6">
-            <div>
-              <label
-                htmlFor="title"
-                className="block text-sm font-medium text-gray-700 mb-1"
-              >
-                Recipe Title
-              </label>
-              <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
-                required
-              />
-            </div>
+            <InputField
+              type="text"
+              name="title"
+              label="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="Recipe title"
+            />
 
             <div>
               <label
@@ -165,41 +115,22 @@ export default function CreateRecipe() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <label
-                  htmlFor="cookingTime"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  <Clock className="h-4 w-4 inline mr-1" />
-                  Cooking Time (minutes)
-                </label>
-                <input
-                  type="number"
-                  id="cookingTime"
-                  value={cookingTime}
-                  onChange={(e) => setCookingTime(e.target.value)}
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
-                  required
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="servings"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  <Users className="h-4 w-4 inline mr-1" />
-                  Servings
-                </label>
-                <input
-                  type="number"
-                  id="servings"
-                  value={servings}
-                  onChange={(e) => setServings(e.target.value)}
-                  className="block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"
-                  required
-                />
-              </div>
+              <InputField
+                type="number"
+                name="cookingTime"
+                label="Cooking Time (minutes)"
+                value={cookingTime}
+                onChange={(e) => setCookingTime(e.target.value)}
+                icon={<Clock className="h-4 w-4 inline mr-1" />}
+              />
+              <InputField
+                type="number"
+                name="servings"
+                label="Servings"
+                value={servings}
+                onChange={(e) => setServings(e.target.value)}
+                icon={<Users className="h-4 w-4 inline mr-1" />}
+              />
 
               <div>
                 <label

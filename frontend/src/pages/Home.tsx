@@ -1,28 +1,33 @@
 import { Sparkles, Users, Bookmark } from "lucide-react";
 import Button from "../components/Button";
 import { Link } from "react-router-dom";
+import { useUserStore } from "../stores/useUserStore";
 
 export default function Home() {
+  const { isAuthenticated } = useUserStore();
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="w-full bg-white">
-        <div className="relative pt-24 sm:pt-32 sm:pb-24 max-w-7xl mx-auto">
+        <div className="relative pt-12 pb-10 max-w-7xl mx-auto">
           <div className="mx-auto px-6 lg:px-8">
             <div className="mx-auto max-w-2xl text-center">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Create Amazing Recipes with AI
+                Create Amazing Recipes and share with the friends!
               </h1>
               <p className="mt-6 text-lg leading-8 text-gray-600">
                 Share your culinary creations, discover new recipes, and get
                 AI-powered suggestions to enhance your cooking journey.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Link to="/register">
-                  <Button size="lg" type="button" onClick={() => {}}>
-                    Get Started
-                  </Button>
-                </Link>
+                {!isAuthenticated ? (
+                  <Link to="/register">
+                    <Button size="lg" type="button" onClick={() => {}}>
+                      Get Started
+                    </Button>
+                  </Link>
+                ) : null}
                 <Link to="/explore">
                   <Button variant="outline" size="lg" type="button">
                     Explore Recipes
@@ -36,16 +41,16 @@ export default function Home() {
 
       {/* Features Section */}
       <div className="py-16 max-w-7xl mx-auto">
-        <div>
-          <div className="mx-auto lg:text-center pb-16 mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <div className="px-8">
+          <div className="mx-auto text-center pb-16 mb-16">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 lg:text-4xl">
               Everything you need to create amazing recipes
             </h2>
           </div>
           <div className="mx-auto max-w-7xl">
-            <div className="flex justify-center items-center gap-12">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-12">
               {/* Feature Cards */}
-              <div className="flex flex-col justify-center items-baseline gap-4">
+              <div className="w-full flex flex-col justify-center items-baseline gap-4">
                 <div className="flex justify-center items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
                     <Sparkles className="h-6 w-6 text-white" />
@@ -60,7 +65,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-col justify-center items-baseline gap-4">
+              <div className="flex flex-col justify-center items-baseline gap-4 w-full">
                 <div className="flex justify-center items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
                     <Users className="h-6 w-6 text-white" />
@@ -75,7 +80,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex flex-col justify-center items-baseline gap-4">
+              <div className="flex flex-col justify-center items-baseline gap-4 w-full">
                 <div className="flex justify-center items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
                     <Bookmark className="h-6 w-6 text-white" />
