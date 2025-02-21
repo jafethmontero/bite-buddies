@@ -6,12 +6,14 @@ import {
   Search,
   LogOut,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useUserStore } from "../stores/useUserStore";
 import Button from "./Button";
 
 export default function Navbar() {
   const { isAuthenticated } = useUserStore();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   return (
     <>
@@ -46,7 +48,11 @@ export default function Navbar() {
                 <>
                   <Link
                     to="/explore"
-                    className="text-gray-600 hover:text-primary-dark group"
+                    className={`${
+                      currentPath === "/explore"
+                        ? "text-primary"
+                        : "text-gray-600"
+                    } hover:text-primary-dark group`}
                   >
                     <p className="text-lg relative w-max">
                       <span>Explore</span>
@@ -56,7 +62,11 @@ export default function Navbar() {
                   </Link>
                   <Link
                     to="/create"
-                    className="text-gray-600 hover:text-primary-dark group"
+                    className={`${
+                      currentPath === "/create"
+                        ? "text-primary"
+                        : "text-gray-600"
+                    } hover:text-primary-dark group`}
                   >
                     <p className="text-lg relative w-max">
                       <span>Create</span>
@@ -66,7 +76,11 @@ export default function Navbar() {
                   </Link>
                   <Link
                     to="/my-recipes"
-                    className="text-gray-600 hover:text-primary-dark group"
+                    className={`${
+                      currentPath === "/my-recipes"
+                        ? "text-primary"
+                        : "text-gray-600"
+                    } hover:text-primary-dark group`}
                   >
                     <p className="text-lg relative w-max">
                       <span>My recipes</span>
