@@ -109,6 +109,10 @@ npm start
  ┃ ┣ 📜 package.json
 ```
 
+# 🚀 CD/CI
+
+- Github Actions
+
 ## 🚀 Deployment
 
 - **Frontend:** Deploy to Vercel or Netlify
