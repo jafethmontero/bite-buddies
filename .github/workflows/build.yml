@@ -1,0 +1,55 @@
+name: Build Backend and Frontend
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # Install & Build Backend
+      - name: Install Backend Dependencies
+        working-directory: backend
+        run: npm install
+
+      - name: Build Backend
+        working-directory: backend
+        run: npm run build # Change this if your backend does not have a build step
+
+      # Install & Build Frontend
+      - name: Install Frontend Dependencies
+        working-directory: frontend
+        run: npm install
+
+      - name: Build Frontend
+        working-directory: frontend
+        run: npm run build
+
+      # Optional: Upload Frontend Build Artifacts (if needed for deployment)
+      - name: Upload Frontend Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: frontend/build
+
+      # Optional: Upload Backend Build Artifacts (if needed for deployment)
+      - name: Upload Backend Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-build
+          path: backend/dist  # Change this if your backend builds to a different directory
