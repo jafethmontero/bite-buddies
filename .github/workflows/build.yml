@@ -29,7 +29,7 @@ jobs:
 
       - name: Build Backend
         working-directory: backend
-        run: npm run build # Change this if your backend does not have a build step
+        run: npm run build
 
       # Install & Build Frontend
       - name: Install Frontend Dependencies
@@ -41,15 +41,15 @@ jobs:
         run: npm run build
 
       # Optional: Upload Frontend Build Artifacts (if needed for deployment)
-      - name: Upload Frontend Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: frontend-build
-          path: frontend/build
+      #- name: Upload Frontend Build Artifacts
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: frontend-build
+      #    path: frontend/build
 
       # Optional: Upload Backend Build Artifacts (if needed for deployment)
-      - name: Upload Backend Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: backend-build
-          path: backend/dist  # Change this if your backend builds to a different directory
+      #- name: Upload Backend Build Artifacts
+      #  uses: actions/upload-artifact@v4
+      #  with:
+      #    name: backend-build
+      #    path: backend/dist  # Change this if your backend builds to a different directory
